@@ -1,44 +1,24 @@
-import { useMemo, useState } from "react";
 import { profileLinks } from "../data/links";
-import {
-  photoSets,
-  pickRandomCover,
-  type PhotoSet,
-  type PortfolioImage,
-} from "../data/photoSets";
-import { PhotoLightbox } from "./PhotoLightbox";
 import "./PhotoPortfolio.css";
 
-type LightboxState = {
-  set: PhotoSet;
-  startIndex: number;
-};
+const INSTAGRAM_URL = "https://instagram.com/studyofnight";
 
-type CoverEntry = {
-  set: PhotoSet;
-  cover: PortfolioImage;
-};
+const instagramCards = [
+  "AI systems",
+  "Web tools",
+  "Interface taste",
+  "Photo direction",
+  "Visual design",
+  "Product polish",
+  "Creative tech",
+  "Field work",
+  "Storytelling",
+  "Build process",
+  "Experiments",
+  "Case studies",
+];
 
 export function PhotoPortfolio({ onOpenResume }: { onOpenResume: () => void }) {
-  const covers = useMemo<CoverEntry[]>(
-    () =>
-      photoSets.map((set) => ({
-        set,
-        cover: pickRandomCover(set),
-      })),
-    [],
-  );
-
-  const [lightbox, setLightbox] = useState<LightboxState | null>(null);
-
-  const openSet = (set: PhotoSet, cover: PortfolioImage) => {
-    const startIndex = Math.max(
-      0,
-      set.images.findIndex((img) => img.src === cover.src),
-    );
-    setLightbox({ set, startIndex });
-  };
-
   return (
     <div className="portfolio">
       <div className="portfolio-grain" aria-hidden />
@@ -47,7 +27,7 @@ export function PhotoPortfolio({ onOpenResume }: { onOpenResume: () => void }) {
         <h1 className="portfolio-title">Edward Night</h1>
         <nav className="portfolio-nav">
           <button type="button" className="is-active">
-            Work
+            Instagram
           </button>
           <button type="button" onClick={onOpenResume}>
             Resume
@@ -71,50 +51,40 @@ export function PhotoPortfolio({ onOpenResume }: { onOpenResume: () => void }) {
         ))}
       </div>
 
-      <p className="portfolio-hint">
-        Cover rotates on every load · Click to open set
-      </p>
+      <section className="instagram-hero">
+        <p className="portfolio-hint">Instagram / Visual archive</p>
+        <h2>Photo, design, and visual direction live on Instagram.</h2>
+        <p>
+          This page no longer uses the old local photo portfolio. The visual work now points directly to the public Instagram archive, keeping the resume focused on IT engineering and AI systems while still showing the secondary creative skill set.
+        </p>
+        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="instagram-cta">
+          Open @studyofnight →
+        </a>
+      </section>
 
-      <main className="portfolio-grid">
-        {covers.map(({ set, cover }) => (
-          <button
-            key={set.id}
-            type="button"
-            className="portfolio-card"
-            onClick={() => openSet(set, cover)}
+      <main className="instagram-grid" aria-label="Instagram preview grid">
+        {instagramCards.map((label, index) => (
+          <a
+            key={label}
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="instagram-card"
+            style={{ animationDelay: `${index * 45}ms` }}
           >
-            <span className="portfolio-card-media">
-              <img src={cover.src} alt={cover.alt} loading="eager" />
-              <span className="portfolio-card-scrim" />
-              <span className="portfolio-card-cta">View set →</span>
-            </span>
-            <span className="portfolio-card-meta">
-              <span className="portfolio-card-title">{set.title}</span>
-              <span className="portfolio-card-count">
-                {set.images.length} images
-                {set.year ? ` · ${set.year}` : ""}
-              </span>
-            </span>
-          </button>
+            <span className="instagram-card-number">{String(index + 1).padStart(2, "0")}</span>
+            <span className="instagram-card-label">{label}</span>
+            <span className="instagram-card-handle">@studyofnight</span>
+          </a>
         ))}
       </main>
 
       <footer className="portfolio-footer">
         <span>©{new Date().getFullYear()} Edward Night</span>
         <span className="portfolio-footer-note">
-          Send the next photo set — we&apos;ll add a folder + entry in{" "}
-          <code>photoSets.ts</code>
+          Live Instagram feed requires a backend API token. This static GitHub Pages version links cleanly to the public profile.
         </span>
       </footer>
-
-      {lightbox && (
-        <PhotoLightbox
-          images={lightbox.set.images}
-          startIndex={lightbox.startIndex}
-          setTitle={lightbox.set.title}
-          onClose={() => setLightbox(null)}
-        />
-      )}
     </div>
   );
 }
