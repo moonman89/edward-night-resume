@@ -9,13 +9,14 @@
   --ai-accent-dim: rgba(255, 26, 26, 0.14);
   --ai-border: rgba(255, 255, 255, 0.1);
   --ai-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06);
-  --ai-dock-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  --ai-dock-right: max(1rem, env(safe-area-inset-right, 0px));
   --ai-dock-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
 
   position: fixed;
   right: var(--ai-dock-right);
   bottom: var(--ai-dock-bottom);
-  z-index: 9999;
+  z-index: 2147483000;
+  max-width: calc(100vw - 2rem);
   font-family: "IBM Plex Mono", "Courier New", monospace;
   pointer-events: none;
 }
@@ -34,8 +35,8 @@
 
 /* Chat panel — anchored above the FAB, grows upward from corner */
 .ai-assistant__panel {
-  width: min(380px, calc(100vw - var(--ai-dock-right) * 2));
-  height: min(520px, calc(100dvh - var(--ai-dock-bottom) - 5.5rem));
+  width: min(380px, calc(100vw - 2rem));
+  height: min(520px, calc(100dvh - var(--ai-dock-bottom) - 6rem));
   display: flex;
   flex-direction: column;
   background: var(--ai-panel);
@@ -329,13 +330,16 @@
 /* Floating action button — bottom of dock stack */
 .ai-assistant__fab {
   position: relative;
-  min-width: 3.75rem;
-  height: 3.75rem;
-  padding: 0 1.1rem 0 0.35rem;
+  min-width: 4rem;
+  height: 4rem;
+  padding: 0 1.25rem 0 0.4rem;
   border-radius: 999px;
   background: var(--ai-accent);
   color: #fff;
-  box-shadow: 0 10px 36px var(--ai-accent-glow);
+  border: 2px solid #fff;
+  box-shadow:
+    0 10px 36px var(--ai-accent-glow),
+    0 0 0 4px rgba(255, 26, 26, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -451,20 +455,26 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .ai-assistant {
     --ai-dock-right: max(0.75rem, env(safe-area-inset-right, 0px));
-    --ai-dock-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+    --ai-dock-bottom: max(5.5rem, env(safe-area-inset-bottom, 0px));
+    left: var(--ai-dock-right);
+    max-width: none;
+  }
+
+  .ai-assistant__dock {
+    align-items: stretch;
+    width: 100%;
   }
 
   .ai-assistant__panel {
-    width: min(100vw - 1.5rem, 380px);
-    height: min(68dvh, 480px);
+    width: 100%;
+    height: min(62dvh, 480px);
   }
 
   .ai-assistant__fab {
-    width: 3.5rem;
-    height: 3.5rem;
+    align-self: flex-end;
   }
 }
 

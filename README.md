@@ -4,7 +4,25 @@ Live **Instagram feed** on the Work page plus a resume presentation.
 
 **Live site (with AI chat):** https://edward-night-resume.web.app
 
-**GitHub Pages mirror:** https://moonman89.github.io/edward-night-resume/ — updates when `main` is pushed successfully; may lag behind Firebase Hosting.
+**GitHub Pages mirror:** https://moonman89.github.io/edward-night-resume/ — updates when `main` is pushed successfully.
+
+### GitHub Pages + AI chat
+
+The Pages build needs your Firebase **web app** values (same as Firebase Console → Project settings → Your apps). Add these **GitHub repository secrets** (Settings → Secrets and variables → Actions):
+
+| Secret | Required |
+|--------|----------|
+| `VITE_FIREBASE_API_KEY` | Recommended (from Firebase web app config) |
+| `VITE_FIREBASE_APP_ID` | Recommended |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Optional |
+
+`projectId`, `authDomain`, and `storageBucket` are set automatically in CI for `edward-night-resume`.
+
+In [Firebase Console](https://console.firebase.google.com/project/edward-night-resume/authentication/settings) → **Authorized domains**, add:
+
+- `moonman89.github.io`
+
+Push to `main` to redeploy Pages.
 
 ## Run locally
 
@@ -114,6 +132,22 @@ cd functions && npm run build && cd ..
 firebase deploy --only functions
 ```
 
+**Required once (fixes “assistant service failed” / unauthenticated):** Gen 2 callables must allow public Cloud Run access for website visitors.
+
+Option A — script (after `firebase login`):
+
+```bash
+npm install
+npm run functions:public
+```
+
+Option B — Google Cloud Console:
+
+1. Open [Cloud Run](https://console.cloud.google.com/run?project=edward-night-resume)
+2. Click **askassistant** → **Security** (or **Permissions**)
+3. Enable **Allow unauthenticated invocations**
+4. Repeat for **generatephoto**
+
 ### 4. Test locally with emulators
 
 Terminal 1 — build and start the Functions emulator:
@@ -131,7 +165,7 @@ Terminal 2 — in `.env` set `VITE_USE_FUNCTIONS_EMULATOR=true`, then:
 npm run dev
 ```
 
-Send a message in the chat panel. Image mode uses **DALL·E 3** (billed per image on your OpenAI account).
+Send a message in the chat panel. Image mode uses **GPT Image** (`gpt-image-1`, billed per image on your OpenAI account).
 
 ### 5. Deploy hosting + functions
 
@@ -158,7 +192,7 @@ Frontend calls use `httpsCallable(functions, "askAssistant")` and `httpsCallable
 
 ### Models (optional)
 
-Defaults: chat `gpt-4o-mini`, images `dall-e-3`. Override by setting env on the function runtime (e.g. `OPENAI_CHAT_MODEL=gpt-4o`) before deploy, or edit `functions/src/index.ts` / `imageGeneration.ts`.
+Defaults: chat `gpt-4o-mini`, images `gpt-image-1`. Override with env `OPENAI_IMAGE_MODEL` (e.g. `gpt-image-1-mini`) before deploy, or edit `functions/src/index.ts` / `imageGeneration.ts`.
 
 ## Deploy
 

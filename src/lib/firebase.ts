@@ -1,13 +1,22 @@
 import { initializeApp, type FirebaseApp } from "firebase/app";
 import { connectFunctionsEmulator, getFunctions } from "firebase/functions";
 
+/**
+ * Firebase web config (public client values).
+ * Override via VITE_FIREBASE_* in .env or GitHub Actions secrets.
+ */
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY ?? "",
+  authDomain:
+    import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ??
+    "edward-night-resume.firebaseapp.com",
+  projectId:
+    import.meta.env.VITE_FIREBASE_PROJECT_ID ?? "edward-night-resume",
+  storageBucket:
+    import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ??
+    "edward-night-resume.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ?? "",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID ?? "",
 };
 
 let app: FirebaseApp | null = null;
@@ -26,7 +35,7 @@ export function getFirebaseApp(): FirebaseApp {
 
 export function getFirebaseFunctions() {
   const firebaseApp = getFirebaseApp();
-  const functions = getFunctions(firebaseApp);
+  const functions = getFunctions(firebaseApp, "us-central1");
 
   if (
     import.meta.env.DEV &&

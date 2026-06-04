@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { httpsCallable } from "firebase/functions";
+import { getCallableErrorMessage } from "../lib/callableError";
 import { getFirebaseFunctions } from "../lib/firebase";
 import "./AiAssistant.css";
 
@@ -21,15 +23,16 @@ function uid() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
-function getErrorMessage(err: unknown): string {
-  if (err && typeof err === "object" && "message" in err) {
-    return String((err as { message: string }).message);
+function readDismissed() {
+  try {
+    return sessionStorage.getItem("ai-assistant-dismissed") === "1";
+  } catch {
+    return false;
   }
-  return "Something went wrong. Try again in a moment.";
 }
 
 export function AiAssistant() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => !readDismissed());
   const [mode, setMode] = useState<Mode>("chat");
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -70,7 +73,7 @@ export function AiAssistant() {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") closeAssistant();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -135,7 +138,7 @@ export function AiAssistant() {
       appendMessage({
         id: uid(),
         role: "assistant",
-        text: getErrorMessage(err),
+        text: getCallableErrorMessage(err),
         error: true,
       });
     } finally {
@@ -144,13 +147,23 @@ export function AiAssistant() {
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    e.stopPropagation();
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       void handleSubmit();
     }
   };
 
-  return (
+  const closeAssistant = () => {
+    setOpen(false);
+    try {
+      sessionStorage.setItem("ai-assistant-dismissed", "1");
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const ui = (
     <div
       className={`ai-assistant ${open ? "ai-assistant--open" : ""}`}
       aria-live="polite"
@@ -177,11 +190,11 @@ export function AiAssistant() {
             <button
               type="button"
               className="ai-assistant__close"
-              onClick={() => setOpen(false)}
-              aria-label="Close assistant"
-            >
-              ×
-            </button>
+            onClick={closeAssistant}
+            aria-label="Close assistant"
+          >
+            ×
+          </button>
           </header>
 
           <div className="ai-assistant__modes" role="tablist">
@@ -303,4 +316,6 @@ export function AiAssistant() {
       </div>
     </div>
   );
+
+  return createPortal(ui, document.body);
 }

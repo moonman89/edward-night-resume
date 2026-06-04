@@ -67,6 +67,20 @@ export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      const target = e.target;
+      if (target instanceof HTMLElement) {
+        const tag = target.tagName;
+        if (
+          target.isContentEditable ||
+          tag === "INPUT" ||
+          tag === "TEXTAREA" ||
+          tag === "SELECT" ||
+          target.closest(".ai-assistant")
+        ) {
+          return;
+        }
+      }
+
       if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
         e.preventDefault();
         go(1);
