@@ -329,18 +329,31 @@
 /* Floating action button — bottom of dock stack */
 .ai-assistant__fab {
   position: relative;
-  width: 3.75rem;
+  min-width: 3.75rem;
   height: 3.75rem;
-  border-radius: 50%;
+  padding: 0 1.1rem 0 0.35rem;
+  border-radius: 999px;
   background: var(--ai-accent);
   color: #fff;
   box-shadow: 0 10px 36px var(--ai-accent-glow);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease,
-    background 0.25s ease;
+    background 0.25s ease,
+    padding 0.25s ease;
+}
+
+.ai-assistant__fab-label {
+  font-family: Syne, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-right: 0.15rem;
 }
 
 .ai-assistant__fab:hover {
@@ -349,11 +362,18 @@
 }
 
 .ai-assistant__fab--open {
+  width: 3.75rem;
+  min-width: 3.75rem;
+  padding: 0;
+  border-radius: 50%;
   background: var(--ai-panel);
   border: 1px solid var(--ai-border);
   color: var(--ai-fg);
   box-shadow: var(--ai-shadow);
-  transform: rotate(0deg);
+}
+
+.ai-assistant__fab--open .ai-assistant__fab-label {
+  display: none;
 }
 
 .ai-assistant__fab--open:hover {

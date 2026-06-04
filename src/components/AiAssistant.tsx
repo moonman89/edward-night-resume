@@ -279,6 +279,7 @@ export function AiAssistant() {
           aria-label={open ? "Close assistant" : "Open Edward Night assistant"}
         >
           <span className="ai-assistant__fab-ring" aria-hidden />
+          {!open && <span className="ai-assistant__fab-label">Ask AI</span>}
           <span className="ai-assistant__fab-icon" aria-hidden>
             {open ? (
               <svg

@@ -2,7 +2,9 @@
 
 Live **Instagram feed** on the Work page plus a resume presentation.
 
-**Live site:** https://moonman89.github.io/edward-night-resume/
+**Live site (with AI chat):** https://edward-night-resume.web.app
+
+**GitHub Pages mirror:** https://moonman89.github.io/edward-night-resume/ — updates when `main` is pushed successfully; may lag behind Firebase Hosting.
 
 ## Run locally
 
