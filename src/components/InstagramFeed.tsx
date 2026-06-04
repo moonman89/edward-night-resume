@@ -3,7 +3,6 @@ import {
   fetchInstagramFeed,
   getInstagramProfileUrl,
   getInstagramUsername,
-  hasInstagramToken,
   type InstagramMedia,
 } from "../lib/instagram";
 import { PhotoLightbox } from "./PhotoLightbox";
@@ -13,8 +12,7 @@ import "./InstagramFeed.css";
 type FeedState =
   | { status: "loading" }
   | { status: "ready"; posts: InstagramMedia[] }
-  | { status: "error"; message: string }
-  | { status: "setup" };
+  | { status: "error"; message: string };
 
 function toLightboxImages(posts: InstagramMedia[]): PortfolioImage[] {
   return posts.map((post) => ({
@@ -24,35 +22,25 @@ function toLightboxImages(posts: InstagramMedia[]): PortfolioImage[] {
 }
 
 export function InstagramFeed() {
-  const [state, setState] = useState<FeedState>(
-    hasInstagramToken() ? { status: "loading" } : { status: "setup" },
-  );
+  const [state, setState] = useState<FeedState>({ status: "loading" });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!hasInstagramToken()) {
-      setState({ status: "setup" });
-      return;
-    }
-
     let cancelled = false;
-    setState({ status: "loading" });
 
     fetchInstagramFeed()
       .then((posts) => {
         if (!cancelled) {
-          setState({ status: "ready", posts });
+          if (posts.length > 0) {
+            setState({ status: "ready", posts });
+          } else {
+            setState({ status: "error", message: "No Instagram posts were found in the generated feed." });
+          }
         }
       })
       .catch((err: Error) => {
         if (!cancelled) {
-          setState({
-            status: "error",
-            message:
-              err.message === "NO_TOKEN"
-                ? "Instagram token not configured."
-                : err.message,
-          });
+          setState({ status: "error", message: err.message });
         }
       });
 
@@ -69,43 +57,10 @@ export function InstagramFeed() {
       <div className="ig-feed">
         <p className="ig-status">Loading @{username}…</p>
         <div className="ig-skeleton-grid" aria-hidden>
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: 12 }).map((_, i) => (
             <div key={i} className="ig-skeleton" />
           ))}
         </div>
-      </div>
-    );
-  }
-
-  if (state.status === "setup") {
-    return (
-      <div className="ig-feed">
-        <section className="ig-setup">
-          <p className="ig-setup-eyebrow">Live feed</p>
-          <h2 className="ig-setup-title">Connect Instagram</h2>
-          <p className="ig-setup-text">
-            Add a Meta Instagram Graph API token to show recent posts from{" "}
-            <a href={profileUrl} target="_blank" rel="noopener noreferrer">
-              @{username}
-            </a>{" "}
-            automatically. See <code>README.md</code> for setup steps.
-          </p>
-          <div className="ig-setup-actions">
-            <a
-              href={profileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ig-btn ig-btn-primary"
-            >
-              View @{username} on Instagram →
-            </a>
-          </div>
-          <p className="ig-setup-note">
-            Local: create <code>.env</code> with{" "}
-            <code>VITE_INSTAGRAM_ACCESS_TOKEN</code>. Production: add the same
-            name as a GitHub Actions secret.
-          </p>
-        </section>
       </div>
     );
   }
@@ -114,14 +69,17 @@ export function InstagramFeed() {
     return (
       <div className="ig-feed">
         <section className="ig-setup ig-setup-error">
-          <p className="ig-setup-eyebrow">Feed error</p>
-          <h2 className="ig-setup-title">Could not load posts</h2>
-          <p className="ig-setup-text">{state.message}</p>
+          <p className="ig-setup-eyebrow">Instagram feed</p>
+          <h2 className="ig-setup-title">Feed not connected yet</h2>
+          <p className="ig-setup-text">
+            The grid is ready, but GitHub needs an Instagram access token to generate the post feed during deployment.
+          </p>
+          <p className="ig-setup-note">{state.message}</p>
           <a
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="ig-btn"
+            className="ig-btn ig-btn-primary"
           >
             Open @{username} on Instagram →
           </a>
@@ -159,7 +117,7 @@ export function InstagramFeed() {
             className="ig-card"
             onClick={() => setLightboxIndex(index)}
           >
-            <img src={post.imageUrl} alt="" loading="lazy" decoding="async" />
+            <img src={post.imageUrl} alt={post.caption} loading="lazy" decoding="async" />
             <span className="ig-card-scrim" />
             <span className="ig-card-type">{post.mediaType.replace("_", " ")}</span>
           </button>
