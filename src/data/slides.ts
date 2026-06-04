@@ -1,125 +1,237 @@
+import type { LinkItem } from "./links";
+
+export type ProjectCard = {
+  name: string;
+  description: string;
+  links: LinkItem[];
+};
+
 export type Slide = {
   id: string;
   label: string;
   title: string;
+  /** Full-bleed background — swap with /slides/your-photo.jpg in public/ */
+  image: string;
+  imageAlt: string;
   subtitle?: string;
   bullets?: string[];
-  links?: { label: string; href: string }[];
+  links?: LinkItem[];
+  projects?: ProjectCard[];
+  tags?: string[];
   quote?: string;
+  manifesto?: string;
 };
+
+const img = (id: string) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=2400&q=80`;
 
 export const slides: Slide[] = [
   {
     id: "cover",
     label: "Index",
     title: "Edward Night",
+    image: img("photo-1509631179647-0177331693ae"),
+    imageAlt: "Fashion editorial — runway atmosphere",
     subtitle:
       "Producer · Photographer · Video Director · AI Systems Architect · Workflow Engineer",
-    quote: "Co-Founder of Morrowgrid",
+    manifesto:
+      "Camera, concept, execution, automation, systems — visuals that land, workflows that hold.",
+    quote: "Co-Founder — Morrowgrid",
+    tags: ["Creative Ops", "AI Systems", "Muted Science"],
+    links: [
+      { label: "Morrowgrid", href: "https://morrowgrid.com" },
+      { label: "Muted Science", href: "https://mutedscience.com" },
+      { label: "Instagram", href: "https://instagram.com/studyofnight" },
+    ],
   },
   {
     id: "identity",
     label: "Identity",
     title: "Creative operator & AI systems builder",
+    image: img("photo-1554048612-b69da5d25493"),
+    imageAlt: "Studio portrait lighting",
     subtitle:
-      "Part director, part producer, part architect, part workflow engineer.",
+      "Director · producer · architect · workflow engineer — less hype, more structure.",
     bullets: [
-      "Photography, video direction, commercial production, and brand storytelling",
-      "AI-assisted workflows, automation, dashboards, and team execution via Morrowgrid",
-      "Less hype, more structure — systems people can actually use",
+      "Photography, video direction, commercial production, artist visuals, documentary, brand storytelling",
+      "Through Morrowgrid: AI workflows, automation, dashboards, outreach, internal tools, team execution",
+      "Making AI useful in the real world — better follow-up, cleaner handoffs, systems people actually use",
+    ],
+    links: [
+      { label: "Morrowgrid", href: "https://morrowgrid.com" },
+      { label: "GitHub", href: "https://github.com/moonman89" },
     ],
   },
   {
     id: "ai-architecture",
     label: "AI Systems",
     title: "AI systems architecture",
+    image: img("photo-1451187580459-43490279c0fa"),
+    imageAlt: "Earth from space — systems view",
+    subtitle: "Turn how a business already works into usable workflow logic.",
     bullets: [
-      "Map messy business processes into clear AI-assisted workflows",
-      "Design systems for leads, task ownership, follow-ups, and client communication",
-      "Structure dashboards for creative teams, agencies, and founders",
-      "Translate business problems into system logic and build-ready requirements",
+      "Map messy processes into clear AI-assisted workflows",
+      "Lead management, task ownership, follow-ups, client communication",
+      "Dashboards for creative teams, agencies, service businesses, founders",
+      "Connect AI tools, automations, databases, and human review steps",
+      "Business problems → system logic, user flows, build-ready requirements",
     ],
+    tags: ["Ops Mapping", "Dashboards", "System Logic"],
   },
   {
     id: "ai-workflows",
     label: "Workflows",
     title: "AI workflow engineering",
+    image: img("photo-1550751827-4bd374c873f5"),
+    imageAlt: "Neon tech corridor",
+    subtitle: "Build, refine, prototype — strategy through execution.",
     bullets: [
-      "Build workflows for operations, outreach, admin, and production management",
-      "Prompt systems, intake flows, automation logic, and repeatable SOPs",
-      "Prototype internal tools, dashboards, and AI-assisted workspaces",
-      "Lead gen, client intake, production tracking, and knowledge organization",
+      "Operations, outreach, admin, production management workflows",
+      "Prompt systems, intake flows, automation logic, repeatable SOPs",
+      "Internal tools, dashboards, AI-assisted workspaces",
+      "Lead gen · client intake · production tracking · knowledge organization",
     ],
+    tags: ["Prompt Systems", "SOPs", "Automation"],
+    links: [{ label: "Muted Science repo", href: "https://github.com/moonman89/muted-science" }],
   },
   {
     id: "creative",
     label: "Creative",
     title: "Creative production",
+    image: img("photo-1452587925147-dadf63c69ddb"),
+    imageAlt: "Film production — light and lens",
+    subtitle: "Visual identity, clean execution, practical delivery.",
     bullets: [
-      "Photography direction and commercial image-making",
-      "Video direction for artists, brands, campaigns, and documentaries",
-      "Shoot planning, visual concepts, and creative rollout",
-      "Fashion, music, editorial, commercial, and documentary visuals",
-      "Post-production: editing, color, selection, and delivery",
+      "Photography direction & commercial image-making",
+      "Video direction — artists, brands, campaigns, documentaries",
+      "Shoot planning, visual concepts, production structure, rollout",
+      "Fashion · music · editorial · commercial · documentary",
+      "Post: editing, color, selection, delivery",
     ],
+    links: [{ label: "Instagram", href: "https://instagram.com/studyofnight" }],
+    tags: ["Direction", "Campaigns", "Post"],
   },
   {
     id: "business",
     label: "Business",
     title: "Morrowgrid & execution",
+    image: img("photo-1497366216548-37526070297c"),
+    imageAlt: "Modern workspace — operations",
+    subtitle: "From scattered admin to systems that scale.",
     bullets: [
       "Custom AI workflow systems for businesses",
-      "Lead generation, outreach, and follow-up structures",
-      "Task ownership and production tracking dashboards",
-      "Brand positioning, client acquisition, and timeline management",
-      "Turning messy ideas into executable systems",
+      "Lead gen, outreach, follow-up structures",
+      "Task ownership & production tracking dashboards",
+      "Brand positioning, client acquisition, timeline management",
+      "Messy ideas → executable systems",
     ],
-    links: [{ label: "morrowgrid.com", href: "https://morrowgrid.com" }],
+    projects: [
+      {
+        name: "Morrowgrid",
+        description:
+          "AI-powered workflow & operations for teams drowning in follow-up debt.",
+        links: [{ label: "morrowgrid.com", href: "https://morrowgrid.com" }],
+      },
+    ],
+    links: [{ label: "Email", href: "mailto:mutedscience@icloud.com" }],
   },
   {
     id: "projects",
     label: "Projects",
     title: "Current focus",
-    bullets: [
-      "Morrowgrid — AI-powered operations for companies that need cleaner execution",
-      "Muted Science — creative technology, automation, and visual infrastructure",
-      "AI systems for creative businesses: leads, briefs, timelines, follow-ups",
-      "Creative direction + production with strong visual identity and clean delivery",
-    ],
-    links: [
-      { label: "mutedscience.com", href: "https://mutedscience.com" },
+    image: img("photo-1541961017774-22349e4a1262"),
+    imageAlt: "Gallery — art and archive",
+    subtitle: "Where the work is living right now.",
+    projects: [
       {
-        label: "github.com/moonman89/muted-science",
-        href: "https://github.com/moonman89/muted-science",
+        name: "Morrowgrid",
+        description:
+          "Co-building AI ops — cleaner execution, communication, automation.",
+        links: [{ label: "Site", href: "https://morrowgrid.com" }],
       },
+      {
+        name: "Muted Science",
+        description:
+          "Creative technology — experimental systems, automation, visual infrastructure.",
+        links: [
+          { label: "Site", href: "https://mutedscience.com" },
+          { label: "GitHub", href: "https://github.com/moonman89/muted-science" },
+        ],
+      },
+      {
+        name: "GitHub — moonman89",
+        description: "Code, experiments, portfolio, creative-tech builds.",
+        links: [
+          { label: "Profile", href: "https://github.com/moonman89" },
+          { label: "Portfolio", href: "https://github.com/moonman89/moonman89" },
+          { label: "framertochatgpt", href: "https://github.com/moonman89/framertochatgpt" },
+          { label: "replitmutedscience", href: "https://github.com/moonman89/replitmutedscience" },
+        ],
+      },
+    ],
+    bullets: [
+      "AI systems for creative businesses — leads, briefs, timelines, vendors, follow-ups",
+      "Creative direction + production with strong visual identity",
     ],
   },
   {
     id: "stack",
     label: "Stack",
     title: "Tools & work areas",
+    image: img("photo-1518770660439-4636190af475"),
+    imageAlt: "Circuit — tools and technology",
     bullets: [
-      "AI: workflow design, prompt systems, automation logic, GitHub, CRM/task systems",
-      "Creative: photography, video direction, producing, campaign concepts",
-      "Post: DaVinci Resolve, Photoshop, Capture One, Figma",
-      "Business: lead gen, brand positioning, outreach, production planning",
+      "AI / Systems — workflow design, architecture, prompts, automation, GitHub, CRM",
+      "Creative — photography, video direction, producing, campaigns, visual strategy",
+      "Post — DaVinci Resolve, Photoshop, Capture One, Figma",
+      "Business — lead gen, positioning, acquisition, outreach, production planning",
     ],
+    tags: [
+      "AI Workflows",
+      "DaVinci",
+      "Capture One",
+      "Figma",
+      "Lead Gen",
+      "Documentary",
+      "Fashion",
+      "Creative Tech",
+    ],
+  },
+  {
+    id: "value",
+    label: "Edge",
+    title: "Where I add value",
+    image: img("photo-1618005182384-a83a8dd57f6c"),
+    imageAlt: "Abstract form — vision and structure",
+    subtitle: "Taste + structure — concept through delivery.",
+    bullets: [
+      "Shape the visual idea, organize production, understand the business goal",
+      "Design the system around execution — handoff, repeat, automate, scale",
+      "Creative instinct + operational architecture in one operator",
+    ],
+    quote: "Build the vision. Architect the system. Execute clean.",
   },
   {
     id: "contact",
     label: "Contact",
-    title: "Open to collaborate",
+    title: "Open to",
+    image: img("photo-1514525253161-7a46f19e9331"),
+    imageAlt: "Night crowd — live culture",
+    subtitle: "Founders · agencies · artists · operators.",
     bullets: [
-      "AI workflow architecture and business automation",
-      "Internal tools, dashboards, and creative technology",
-      "Brand, photo, and video campaigns",
-      "Artist visuals, documentary, and field production",
-      "Strategic work with founders, agencies, artists, and operators",
+      "AI workflow architecture & business automation",
+      "Internal tools, dashboards, creative technology",
+      "Brand / photo / video campaigns",
+      "Artist visuals · documentary · field production",
+      "Strategic collaborations",
     ],
     links: [
-      { label: "mutedscience@icloud.com", href: "mailto:mutedscience@icloud.com" },
-      { label: "github.com/moonman89", href: "https://github.com/moonman89" },
+      { label: "Email", href: "mailto:mutedscience@icloud.com", note: "mutedscience@icloud.com" },
+      { label: "Instagram", href: "https://instagram.com/studyofnight", note: "@studyofnight" },
+      { label: "Morrowgrid", href: "https://morrowgrid.com" },
+      { label: "Muted Science", href: "https://mutedscience.com" },
+      { label: "GitHub", href: "https://github.com/moonman89" },
+      { label: "muted-science repo", href: "https://github.com/moonman89/muted-science" },
     ],
-    quote: "Build the vision. Architect the system. Execute clean.",
   },
 ];
