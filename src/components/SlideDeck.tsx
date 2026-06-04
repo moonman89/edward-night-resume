@@ -5,7 +5,26 @@ import "./SlideDeck.css";
 
 const YEAR = new Date().getFullYear();
 const MARQUEE =
-  "EDWARD NIGHT · CREATIVE OPERATOR · AI SYSTEMS ARCHITECT · WORKFLOW ENGINEER · MORROWGRID · MUTED SCIENCE · STUDY OF NIGHT · ";
+  "EDWARD NIGHT · IT ENGINEER · AI ENGINEER · AI SYSTEMS ARCHITECT · REACT · FIREBASE · VERTEX AI · MUTED SCIENCE · ";
+
+const TECH_WIDGET = [
+  {
+    label: "Web Frontend",
+    items: ["React", "Flutter", "Vanilla Javascript / HTML", "Figma"],
+  },
+  {
+    label: "Backend",
+    items: ["NodeJS", "Python", "Java", "C# .NET"],
+  },
+  {
+    label: "Google Cloud",
+    items: ["Firebase", "Cloud Run", "Vertex AI", "AI Studio"],
+  },
+  {
+    label: "AI Tools",
+    items: ["Google AI coding tools", "Cursor", "Gemini 3.5", "Opus 4.8", "Sonnet 4.6"],
+  },
+];
 
 type SlideDeckProps = {
   onOpenPortfolio?: () => void;
@@ -14,9 +33,11 @@ type SlideDeckProps = {
 export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
   const [index, setIndex] = useState(0);
   const [motionKey, setMotionKey] = useState(0);
+  const [techIndex, setTechIndex] = useState(0);
   const total = slides.length;
   const slide = slides[index];
   const progress = ((index + 1) / total) * 100;
+  const tech = TECH_WIDGET[techIndex];
 
   const go = useCallback(
     (delta: number) => {
@@ -34,6 +55,14 @@ export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
       if (prev !== i) setMotionKey((k) => k + 1);
       return i;
     });
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTechIndex((i) => (i + 1) % TECH_WIDGET.length);
+    }, 2200);
+
+    return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
@@ -157,6 +186,21 @@ export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
 
             {slide.manifesto && (
               <p className="content-manifesto">{slide.manifesto}</p>
+            )}
+
+            {(slide.id === "cover" || slide.id === "stack") && (
+              <div className="tech-widget" aria-label="Rotating technical stack widget">
+                <div className="tech-widget-topline">
+                  <span>Live stack signal</span>
+                  <span>{String(techIndex + 1).padStart(2, "0")}/04</span>
+                </div>
+                <h2>{tech.label}</h2>
+                <div className="tech-widget-grid">
+                  {tech.items.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </div>
             )}
 
             {slide.quote && <p className="content-quote">{slide.quote}</p>}
