@@ -7,7 +7,11 @@ const YEAR = new Date().getFullYear();
 const MARQUEE =
   "EDWARD NIGHT · MORROWGRID · MUTED SCIENCE · AI SYSTEMS · CREATIVE OPS · STUDY OF NIGHT · ";
 
-export function SlideDeck() {
+type SlideDeckProps = {
+  onOpenPortfolio?: () => void;
+};
+
+export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
   const [index, setIndex] = useState(0);
   const [motionKey, setMotionKey] = useState(0);
   const total = slides.length;
@@ -82,6 +86,15 @@ export function SlideDeck() {
           </button>
 
           <nav className="site-nav" aria-label="Sections">
+            {onOpenPortfolio && (
+              <button
+                type="button"
+                className="site-nav-link site-nav-work"
+                onClick={onOpenPortfolio}
+              >
+                Work
+              </button>
+            )}
             {slides.map((s, i) => (
               <button
                 key={s.id}

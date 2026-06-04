@@ -153,6 +153,12 @@
   color: var(--accent);
 }
 
+.site-nav-work {
+  margin-right: 0.25rem;
+  padding-right: 1rem;
+  border-right: 1px solid var(--border);
+}
+
 .site-nav-link.is-active::after {
   width: 100%;
 }
