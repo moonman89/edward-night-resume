@@ -1,0 +1,207 @@
+.site {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+/* —— Header (EBO-style fixed chrome) —— */
+.site-header {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto;
+  align-items: start;
+  gap: 1rem;
+  background: #fff;
+}
+
+.site-title {
+  text-align: left;
+  font-weight: 400;
+}
+
+.site-title:hover {
+  text-decoration: underline;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  align-content: flex-start;
+}
+
+.site-nav-link {
+  opacity: 0.45;
+  transition: opacity 0.15s;
+}
+
+.site-nav-link:hover,
+.site-nav-link.is-active {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.site-nav-link.is-active {
+  text-decoration: none;
+}
+
+.site-meta {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* —— Main two-column layout (About-page rhythm) —— */
+.site-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
+  animation: contentIn 0.35s ease;
+}
+
+@keyframes contentIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.site-aside {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 0.15rem;
+}
+
+.slide-index {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.site-content {
+  max-width: 36rem;
+}
+
+.content-title {
+  margin: 0 0 1.25rem;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.content-lead {
+  margin: 0 0 1.25rem;
+  max-width: 32rem;
+}
+
+.content-quote {
+  margin: 0 0 1.25rem;
+  opacity: 0.7;
+}
+
+.content-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.content-list li {
+  margin-bottom: 0.65rem;
+  max-width: 32rem;
+}
+
+.content-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content-links li {
+  margin-bottom: 0.35rem;
+}
+
+.content-links a:hover {
+  text-decoration: underline;
+}
+
+/* —— Footer —— */
+.site-footer {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.site-footer > * {
+  pointer-events: auto;
+}
+
+.copyright {
+  font-size: 14px;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+}
+
+.pager-count {
+  opacity: 0.45;
+}
+
+.pager button:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .site {
+    padding: 20px;
+  }
+
+  .site-header {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    order: 3;
+    margin-top: 0.75rem;
+  }
+
+  .site-main {
+    grid-template-columns: 1fr;
+    padding-top: 7.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .site-aside {
+    display: none;
+  }
+
+  .site-footer {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+}
