@@ -43,20 +43,8 @@ export function AiAssistant() {
       text: "Hi — I'm Edward's portfolio assistant. Ask about skills, stack, and projects — or switch to image mode for a visual concept.",
     },
   ]);
-  const [configError, setConfigError] = useState<string | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    try {
-      getFirebaseFunctions();
-      setConfigError(null);
-    } catch (e) {
-      setConfigError(
-        e instanceof Error ? e.message : "Firebase is not configured.",
-      );
-    }
-  }, []);
 
   useEffect(() => {
     if (open && listRef.current) {
@@ -86,16 +74,6 @@ export function AiAssistant() {
   const handleSubmit = async () => {
     const trimmed = input.trim();
     if (!trimmed || loading) return;
-
-    if (configError) {
-      appendMessage({
-        id: uid(),
-        role: "assistant",
-        text: configError,
-        error: true,
-      });
-      return;
-    }
 
     const userMsg: ChatMessage = {
       id: uid(),
