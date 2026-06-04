@@ -70,6 +70,96 @@ npm run build
 npm run preview
 ```
 
+## AI portfolio assistant (Firebase Functions)
+
+The floating chatbot on every page calls **Firebase callable functions** — the browser never talks to OpenAI or other AI APIs directly. Your ChatGPT API key lives only in Functions secrets.
+
+### 1. Initialize Functions (first time)
+
+```bash
+npm install -g firebase-tools
+firebase login
+cd /path/to/edward-night-resume
+cd functions && npm install && cd ..
+```
+
+### 2. Firebase web config (frontend)
+
+In [Firebase Console](https://console.firebase.google.com/) → Project **edward-night-resume** → Project settings → Your apps → Web app, copy the config into `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Fill in `VITE_FIREBASE_*` in `.env` from the Firebase Console web app config.
+
+Restart `npm run dev` after changing `.env`.
+
+### 3. Set the OpenAI secret (backend)
+
+Use the same API key as ChatGPT from [OpenAI API keys](https://platform.openai.com/api-keys) (requires API billing; separate from a plain ChatGPT Plus subscription).
+
+```bash
+firebase functions:secrets:set OPENAI_API_KEY
+```
+
+Paste your `sk-...` key when prompted.
+
+Deploy functions so the secret is bound:
+
+```bash
+cd functions && npm run build && cd ..
+firebase deploy --only functions
+```
+
+### 4. Test locally with emulators
+
+Terminal 1 — build and start the Functions emulator:
+
+```bash
+cd functions
+npm run build
+cd ..
+firebase emulators:start --only functions
+```
+
+Terminal 2 — in `.env` set `VITE_USE_FUNCTIONS_EMULATOR=true`, then:
+
+```bash
+npm run dev
+```
+
+Send a message in the chat panel. Image mode uses **DALL·E 3** (billed per image on your OpenAI account).
+
+### 5. Deploy hosting + functions
+
+```bash
+npm run build
+firebase deploy --only hosting,functions
+```
+
+Or hosting only / functions only:
+
+```bash
+firebase deploy --only hosting
+firebase deploy --only functions
+```
+
+### Callable API
+
+| Function | Payload | Response |
+|----------|---------|----------|
+| `askAssistant` | `{ message: string }` | `{ type: "text", answer: string }` |
+| `generatePhoto` | `{ prompt: string }` | `{ type: "image", imageUrl: string, prompt: string }` |
+
+Frontend calls use `httpsCallable(functions, "askAssistant")` and `httpsCallable(functions, "generatePhoto")` from `firebase/functions`.
+
+### Models (optional)
+
+Defaults: chat `gpt-4o-mini`, images `dall-e-3`. Override by setting env on the function runtime (e.g. `OPENAI_CHAT_MODEL=gpt-4o`) before deploy, or edit `functions/src/index.ts` / `imageGeneration.ts`.
+
 ## Deploy
 
 Pushes to `main` run **Deploy to GitHub Pages** automatically.
+
+For Firebase Hosting (with the AI assistant backend), use `firebase deploy` as above. GitHub Pages alone will show the UI but needs Firebase config in build secrets for live AI calls.
