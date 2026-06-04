@@ -306,6 +306,7 @@
 .panel-enter .content-quote,
 .panel-enter .content-tags li,
 .panel-enter .content-list li,
+.panel-enter .stack-group,
 .panel-enter .project-card,
 .panel-enter .content-links li {
   animation: staggerIn 0.55s ease backwards;
@@ -406,6 +407,33 @@
   position: absolute;
   left: 0;
   color: var(--accent);
+}
+
+.content-stack {
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.stack-group {
+  margin-bottom: 0.85rem;
+  animation: staggerIn 0.55s ease backwards;
+}
+
+.stack-group dt {
+  font-family: Syne, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.stack-group dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #ccc9c2;
 }
 
 .content-projects {
@@ -587,6 +615,7 @@
   .panel-enter .content-quote,
   .panel-enter .content-tags li,
   .panel-enter .content-list li,
+  .panel-enter .stack-group,
   .panel-enter .project-card,
   .panel-enter .content-links li,
   .link-rail-item {

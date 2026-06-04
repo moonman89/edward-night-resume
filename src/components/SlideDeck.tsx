@@ -5,7 +5,7 @@ import "./SlideDeck.css";
 
 const YEAR = new Date().getFullYear();
 const MARQUEE =
-  "EDWARD NIGHT · MORROWGRID · MUTED SCIENCE · AI SYSTEMS · CREATIVE OPS · STUDY OF NIGHT · ";
+  "EDWARD NIGHT · AI ENGINEER · AI ARCHITECT · VERTEX AI · REACT · MUTED SCIENCE · STUDY OF NIGHT · ";
 
 type SlideDeckProps = {
   onOpenPortfolio?: () => void;
@@ -179,6 +179,21 @@ export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
                   </li>
                 ))}
               </ul>
+            )}
+
+            {slide.stackGroups && slide.stackGroups.length > 0 && (
+              <dl className="content-stack">
+                {slide.stackGroups.map((group, i) => (
+                  <div
+                    key={group.category}
+                    className="stack-group"
+                    style={{ animationDelay: `${160 + i * 50}ms` }}
+                  >
+                    <dt>{group.category}</dt>
+                    <dd>{group.items.join(" · ")}</dd>
+                  </div>
+                ))}
+              </dl>
             )}
 
             {slide.projects && slide.projects.length > 0 && (

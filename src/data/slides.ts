@@ -1,5 +1,10 @@
 import type { LinkItem } from "./links";
 
+export type StackGroup = {
+  category: string;
+  items: string[];
+};
+
 export type ProjectCard = {
   name: string;
   description: string;
@@ -12,6 +17,7 @@ export type Slide = {
   title: string;
   subtitle?: string;
   bullets?: string[];
+  stackGroups?: StackGroup[];
   links?: LinkItem[];
   projects?: ProjectCard[];
   tags?: string[];
@@ -25,110 +31,110 @@ export const slides: Slide[] = [
     label: "Index",
     title: "Edward Night",
     subtitle:
-      "Producer · Photographer · Video Director · AI Systems Architect · Workflow Engineer",
+      "AI Engineer · AI Architect · Workflow Engineer",
     manifesto:
-      "Camera, concept, execution, automation, systems — visuals that land, workflows that hold.",
-    quote: "Co-Founder — Morrowgrid",
-    tags: ["Creative Ops", "AI Systems", "Muted Science"],
+      "AI systems first — architecture, engineering, and shipping real tools. Photo and creative work are a passion on the side.",
+    quote: "Build the vision. Architect the system. Execute clean.",
+    tags: ["AI Engineering", "AI Architecture", "Vertex AI", "React"],
     links: [
-      { label: "Morrowgrid", href: "https://morrowgrid.com" },
       { label: "Muted Science", href: "https://mutedscience.com" },
       { label: "Instagram", href: "https://instagram.com/studyofnight" },
+      { label: "GitHub", href: "https://github.com/moonman89" },
     ],
   },
   {
     id: "identity",
     label: "Identity",
-    title: "Creative operator & AI systems builder",
-    subtitle:
-      "Director · producer · architect · workflow engineer — less hype, more structure.",
+    title: "AI engineer & AI architect",
+    subtitle: "Primary focus — design, build, and deploy AI-powered systems.",
     bullets: [
-      "Photography, video direction, commercial production, artist visuals, documentary, brand storytelling",
-      "Through Morrowgrid: AI workflows, automation, dashboards, outreach, internal tools, team execution",
-      "Making AI useful in the real world — better follow-up, cleaner handoffs, systems people actually use",
+      "AI engineering: prototypes, integrations, automation, and production-ready workflows",
+      "AI architecture: system logic, user flows, human-in-the-loop review, build-ready specs",
+      "Less hype, more structure — systems teams can actually run",
+      "Photography & creative direction — hobby and bonus skill set, not the day job",
     ],
-    links: [
-      { label: "Morrowgrid", href: "https://morrowgrid.com" },
-      { label: "GitHub", href: "https://github.com/moonman89" },
-    ],
+    links: [{ label: "GitHub", href: "https://github.com/moonman89" }],
   },
   {
     id: "ai-architecture",
-    label: "AI Systems",
+    label: "AI Architect",
     title: "AI systems architecture",
-    subtitle: "Turn how a business already works into usable workflow logic.",
+    subtitle: "Map how a business works → usable AI workflow logic.",
     bullets: [
-      "Map messy processes into clear AI-assisted workflows",
+      "Messy processes into clear AI-assisted workflows",
       "Lead management, task ownership, follow-ups, client communication",
-      "Dashboards for creative teams, agencies, service businesses, founders",
+      "Dashboards for teams, agencies, service businesses, founders",
       "Connect AI tools, automations, databases, and human review steps",
-      "Business problems → system logic, user flows, build-ready requirements",
+      "Business problems → system logic, UX flows, build-ready requirements",
     ],
-    tags: ["Ops Mapping", "Dashboards", "System Logic"],
+    tags: ["System Logic", "Vertex AI", "Firebase", "Cloud Run"],
   },
   {
     id: "ai-workflows",
-    label: "Workflows",
+    label: "AI Engineer",
     title: "AI workflow engineering",
-    subtitle: "Build, refine, prototype — strategy through execution.",
+    subtitle: "Build, refine, ship — strategy through execution.",
     bullets: [
-      "Operations, outreach, admin, production management workflows",
+      "Operations, outreach, admin, and production management workflows",
       "Prompt systems, intake flows, automation logic, repeatable SOPs",
       "Internal tools, dashboards, AI-assisted workspaces",
       "Lead gen · client intake · production tracking · knowledge organization",
     ],
-    tags: ["Prompt Systems", "SOPs", "Automation"],
+    tags: ["Prompt Systems", "Automation", "Node.js", "Python"],
     links: [{ label: "Muted Science repo", href: "https://github.com/moonman89/muted-science" }],
+  },
+  {
+    id: "stack",
+    label: "Stack",
+    title: "Technical stack",
+    subtitle: "Languages, cloud, and AI tooling.",
+    stackGroups: [
+      {
+        category: "Web Frontend",
+        items: ["React", "Flutter", "Vanilla JavaScript / HTML"],
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Python", "Java", "C# .NET"],
+      },
+      {
+        category: "Google Cloud",
+        items: ["Firebase", "Cloud Run", "Vertex AI", "AI Studio"],
+      },
+      {
+        category: "AI Tools",
+        items: [
+          "Antigravity Google",
+          "Cursor",
+          "Gemini 3.5",
+          "Opus 4.8",
+          "Sonnet 4.6",
+        ],
+      },
+    ],
+    tags: ["React", "Flutter", "Vertex AI", "Cursor"],
   },
   {
     id: "creative",
     label: "Creative",
-    title: "Creative production",
-    subtitle: "Visual identity, clean execution, practical delivery.",
+    title: "Photo & creative — hobby + bonus",
+    subtitle: "Passion project energy — strengthens taste and visual communication.",
     bullets: [
       "Photography direction & commercial image-making",
       "Video direction — artists, brands, campaigns, documentaries",
-      "Shoot planning, visual concepts, production structure, rollout",
       "Fashion · music · editorial · commercial · documentary",
-      "Post: editing, color, selection, delivery",
+      "Post: DaVinci Resolve, Photoshop, Capture One, Figma",
+      "Not primary hire focus — adds depth to AI and product work",
     ],
     links: [{ label: "Instagram", href: "https://instagram.com/studyofnight" }],
-    tags: ["Direction", "Campaigns", "Post"],
-  },
-  {
-    id: "business",
-    label: "Business",
-    title: "Morrowgrid & execution",
-    subtitle: "From scattered admin to systems that scale.",
-    bullets: [
-      "Custom AI workflow systems for businesses",
-      "Lead gen, outreach, follow-up structures",
-      "Task ownership & production tracking dashboards",
-      "Brand positioning, client acquisition, timeline management",
-      "Messy ideas → executable systems",
-    ],
-    projects: [
-      {
-        name: "Morrowgrid",
-        description:
-          "AI-powered workflow & operations for teams drowning in follow-up debt.",
-        links: [{ label: "morrowgrid.com", href: "https://morrowgrid.com" }],
-      },
-    ],
-    links: [{ label: "Email", href: "mailto:mutedscience@icloud.com" }],
+    tags: ["Study of Night", "Direction", "Post"],
   },
   {
     id: "projects",
     label: "Projects",
     title: "Current focus",
-    subtitle: "Where the work is living right now.",
+    subtitle: "Code, experiments, and creative-tech builds.",
     projects: [
-      {
-        name: "Morrowgrid",
-        description:
-          "Co-building AI ops — cleaner execution, communication, automation.",
-        links: [{ label: "Site", href: "https://morrowgrid.com" }],
-      },
       {
         name: "Muted Science",
         description:
@@ -140,7 +146,7 @@ export const slides: Slide[] = [
       },
       {
         name: "GitHub — moonman89",
-        description: "Code, experiments, portfolio, creative-tech builds.",
+        description: "Portfolio, AI experiments, frontend and cloud projects.",
         links: [
           { label: "Profile", href: "https://github.com/moonman89" },
           { label: "Portfolio", href: "https://github.com/moonman89/moonman89" },
@@ -150,40 +156,19 @@ export const slides: Slide[] = [
       },
     ],
     bullets: [
-      "AI systems for creative businesses — leads, briefs, timelines, vendors, follow-ups",
-      "Creative direction + production with strong visual identity",
-    ],
-  },
-  {
-    id: "stack",
-    label: "Stack",
-    title: "Tools & work areas",
-    bullets: [
-      "AI / Systems — workflow design, architecture, prompts, automation, GitHub, CRM",
-      "Creative — photography, video direction, producing, campaigns, visual strategy",
-      "Post — DaVinci Resolve, Photoshop, Capture One, Figma",
-      "Business — lead gen, positioning, acquisition, outreach, production planning",
-    ],
-    tags: [
-      "AI Workflows",
-      "DaVinci",
-      "Capture One",
-      "Figma",
-      "Lead Gen",
-      "Documentary",
-      "Fashion",
-      "Creative Tech",
+      "AI systems for operators — leads, briefs, timelines, follow-ups",
+      "Web apps on React / Flutter with GCP backends",
     ],
   },
   {
     id: "value",
     label: "Edge",
     title: "Where I add value",
-    subtitle: "Taste + structure — concept through delivery.",
+    subtitle: "Engineering rigor + optional creative eye.",
     bullets: [
-      "Shape the visual idea, organize production, understand the business goal",
-      "Design the system around execution — handoff, repeat, automate, scale",
-      "Creative instinct + operational architecture in one operator",
+      "Ship AI systems that connect to how teams already work",
+      "Full stack from prompt logic to React/Flutter UI and Cloud Run deploys",
+      "Creative background as a bonus — stronger UX, campaigns, and visual briefs",
     ],
     quote: "Build the vision. Architect the system. Execute clean.",
   },
@@ -191,18 +176,16 @@ export const slides: Slide[] = [
     id: "contact",
     label: "Contact",
     title: "Open to",
-    subtitle: "Founders · agencies · artists · operators.",
+    subtitle: "AI engineering · architecture · full-stack with GCP.",
     bullets: [
-      "AI workflow architecture & business automation",
-      "Internal tools, dashboards, creative technology",
-      "Brand / photo / video campaigns",
-      "Artist visuals · documentary · field production",
-      "Strategic collaborations",
+      "AI workflow architecture & engineering",
+      "Internal tools, dashboards, Vertex AI / Firebase builds",
+      "React & Flutter frontends with Node, Python, or .NET backends",
+      "Creative collaboration when it supports the product — not core hire",
     ],
     links: [
       { label: "Email", href: "mailto:mutedscience@icloud.com", note: "mutedscience@icloud.com" },
       { label: "Instagram", href: "https://instagram.com/studyofnight", note: "@studyofnight" },
-      { label: "Morrowgrid", href: "https://morrowgrid.com" },
       { label: "Muted Science", href: "https://mutedscience.com" },
       { label: "GitHub", href: "https://github.com/moonman89" },
       { label: "muted-science repo", href: "https://github.com/moonman89/muted-science" },
