@@ -5,7 +5,7 @@ import { SlideDeck } from "./components/SlideDeck";
 type View = "portfolio" | "resume";
 
 function App() {
-  const [view, setView] = useState<View>("portfolio");
+  const [view, setView] = useState<View>("resume");
 
   if (view === "resume") {
     return <SlideDeck onOpenPortfolio={() => setView("portfolio")} />;
