@@ -96,6 +96,18 @@
   max-width: 28rem;
 }
 
+.lightbox-external {
+  margin-top: 0.5rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #ff1a1a;
+}
+
+.lightbox-external:hover {
+  text-decoration: underline;
+}
+
 .lightbox-nav {
   display: flex;
   justify-content: space-between;

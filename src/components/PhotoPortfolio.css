@@ -25,8 +25,8 @@
 
 .portfolio-header,
 .portfolio-links,
-.instagram-hero,
-.instagram-grid,
+.portfolio-hint,
+.portfolio-main,
 .portfolio-footer {
   position: relative;
   z-index: 1;
@@ -90,11 +90,16 @@
 
 .portfolio-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
   padding: 0.85rem 0;
-  font-size: 11px;
+  overflow-x: auto;
+  scrollbar-width: none;
   border-bottom: 1px solid var(--border);
+}
+
+.portfolio-links::-webkit-scrollbar {
+  display: none;
 }
 
 .portfolio-links a:hover {
@@ -102,120 +107,16 @@
 }
 
 .portfolio-hint {
-  margin: 0 0 0.85rem;
+  margin: 1rem 0 1.25rem;
   font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--accent);
-}
-
-.instagram-hero {
-  max-width: 820px;
-  margin: 2rem 0 1.75rem;
-  padding: 1.4rem;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  background:
-    linear-gradient(135deg, rgba(255, 26, 26, 0.16), rgba(255, 26, 26, 0.02)),
-    var(--panel);
-}
-
-.instagram-hero h2 {
-  margin: 0 0 0.8rem;
-  font-family: Syne, sans-serif;
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  line-height: 0.92;
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
-}
-
-.instagram-hero p:not(.portfolio-hint) {
-  max-width: 650px;
-  margin: 0 0 1.2rem;
-  color: #d4d0c8;
-}
-
-.instagram-cta {
-  display: inline-block;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-}
-
-.instagram-cta:hover {
-  background: var(--accent);
-  color: #000;
-  transform: translateY(-2px);
-}
-
-.instagram-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-  gap: 0.85rem;
-}
-
-.instagram-card {
-  position: relative;
-  min-height: 180px;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  background:
-    radial-gradient(circle at 20% 0%, rgba(255, 26, 26, 0.18), transparent 45%),
-    #090909;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  animation: cardIn 0.6s ease backwards;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-}
-
-.instagram-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent 0 45%, rgba(255, 255, 255, 0.05) 46%, transparent 47% 100%);
-  pointer-events: none;
-}
-
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-}
-
-.instagram-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-}
-
-.instagram-card-number {
   color: var(--accent);
-  font-family: Syne, sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  line-height: 1;
 }
 
-.instagram-card-label {
-  font-family: Syne, sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.instagram-card-handle {
-  color: var(--muted);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.portfolio-main {
+  flex: 1;
+  width: 100%;
 }
 
 .portfolio-footer {
@@ -231,10 +132,6 @@
   letter-spacing: 0.1em;
 }
 
-.portfolio-footer-note {
-  max-width: 760px;
-}
-
 @media (max-width: 720px) {
   .portfolio-header {
     grid-template-columns: 1fr auto;
@@ -244,9 +141,5 @@
     grid-column: 1 / -1;
     justify-content: flex-start;
     order: 3;
-  }
-
-  .instagram-hero {
-    padding: 1.05rem;
   }
 }

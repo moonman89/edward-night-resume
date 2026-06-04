@@ -25,6 +25,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_INSTAGRAM_ACCESS_TOKEN: ${{ secrets.VITE_INSTAGRAM_ACCESS_TOKEN }}
+          VITE_INSTAGRAM_USERNAME: studyofnight
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

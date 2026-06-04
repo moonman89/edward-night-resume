@@ -7,6 +7,7 @@ type Props = {
   startIndex: number;
   setTitle: string;
   onClose: () => void;
+  getExternalUrl?: (index: number) => string | undefined;
 };
 
 export function PhotoLightbox({
@@ -14,6 +15,7 @@ export function PhotoLightbox({
   startIndex,
   setTitle,
   onClose,
+  getExternalUrl,
 }: Props) {
   const [index, setIndex] = useState(startIndex);
 
@@ -46,6 +48,7 @@ export function PhotoLightbox({
   }, [go, onClose]);
 
   const image = images[index];
+  const externalUrl = getExternalUrl?.(index);
 
   return (
     <div className="lightbox" role="dialog" aria-modal="true" aria-label={setTitle}>
@@ -68,6 +71,16 @@ export function PhotoLightbox({
           className="lightbox-image"
         />
         <figcaption className="lightbox-caption">{image.alt}</figcaption>
+        {externalUrl && (
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lightbox-external"
+          >
+            Open on Instagram →
+          </a>
+        )}
       </figure>
 
       <nav className="lightbox-nav" aria-label="Slideshow">

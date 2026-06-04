@@ -76,9 +76,12 @@ Cloud Shell does not have this folder until the repo is on GitHub. First push fr
 git clone https://github.com/moonman89/edward-night-resume.git
 cd edward-night-resume/tools-presentation
 npm install
-npm run build
-npx firebase-tools deploy --only hosting
+npm run deploy
 ```
+
+`npm run deploy` builds `dist/` then deploys. If you run `firebase deploy` directly, Firebase will also run the build first via the `predeploy` hook in `firebase.json`.
+
+**If you see `Directory 'dist' for Hosting does not exist`:** run `npm install` then `npm run build` — `dist/` is generated locally and is not in git.
 
 Cloud Shell is already tied to your GCP project (`project-1-e54bb`). If deploy asks you to log in, run `firebase login` first.
 

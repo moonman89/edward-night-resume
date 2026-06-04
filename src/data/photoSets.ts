@@ -42,6 +42,24 @@ export const photoSets: PhotoSet[] = [
       photo("study-of-night", "12.png", "Backlit — tie adjustment, housing blocks"),
     ],
   },
+  {
+    id: "fashion-editorial",
+    title: "Fashion & Editorial",
+    year: "2024",
+    images: [
+      photo("fashion-editorial", "01.png", "ANIMAL sweatshirt — rope cord, faux fur jacket"),
+      photo("fashion-editorial", "02.png", "Patchwork denim — 11:11 tee, silver chain"),
+      photo("fashion-editorial", "03.png", "Full look — denim patchwork wall and chaps"),
+      photo("fashion-editorial", "04.png", "Studio portrait — tattoos, chain, hand over eyes"),
+      photo("fashion-editorial", "05.png", "Black & white — animals & gods hoodie, framed"),
+      photo("fashion-editorial", "06.png", "Red hair — animals & gods hoodie, orange frames"),
+      photo("fashion-editorial", "07.png", "Window light — deconstructed denim, chains"),
+      photo("fashion-editorial", "08.png", "Studio floor — GOD tee, harness, flame mesh sleeve"),
+      photo("fashion-editorial", "09.png", "Close portrait — GOD tee, flame gloves, buzz cut"),
+      photo("fashion-editorial", "10.png", "BTS studio — ANIMAL jacket, patchwork jeans"),
+      photo("fashion-editorial", "11.png", "Streetwear — red hair, animals & gods, silver chains"),
+    ],
+  },
 ];
 
 export function pickRandomCover(set: PhotoSet): PortfolioImage {
