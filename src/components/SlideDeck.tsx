@@ -5,7 +5,7 @@ import "./SlideDeck.css";
 
 const YEAR = new Date().getFullYear();
 const MARQUEE =
-  "EDWARD NIGHT · AI ENGINEER · AI ARCHITECT · VERTEX AI · REACT · MUTED SCIENCE · STUDY OF NIGHT · ";
+  "EDWARD NIGHT · CREATIVE OPERATOR · AI SYSTEMS ARCHITECT · WORKFLOW ENGINEER · MORROWGRID · MUTED SCIENCE · STUDY OF NIGHT · ";
 
 type SlideDeckProps = {
   onOpenPortfolio?: () => void;
