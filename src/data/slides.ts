@@ -32,13 +32,12 @@ export const slides: Slide[] = [
     title: "Edward Night",
     subtitle: "IT Engineer · AI Engineer · AI Systems Architect · Workflow Engineer",
     manifesto:
-      "I build practical AI-powered systems, web tools, automation workflows, and cloud-based applications. AI and IT engineering are the main focus; photo and design are secondary skills that sharpen product taste and presentation.",
+      "I build practical AI-powered systems, web tools, workflow systems, and cloud-based applications. AI and IT engineering are the main focus; photo and design are secondary skills that sharpen product taste and presentation.",
     quote: "Build the system. Ship the tool. Make it usable.",
     tags: ["IT Engineer", "AI Engineer", "React", "Google Cloud"],
     links: [
       { label: "Email", href: "mailto:mutedscience@icloud.com", note: "mutedscience@icloud.com" },
       { label: "Instagram", href: "https://instagram.com/studyofnight", note: "@studyofnight" },
-      { label: "Muted Science", href: "https://mutedscience.com" },
       { label: "GitHub", href: "https://github.com/moonman89" },
     ],
   },
@@ -46,9 +45,9 @@ export const slides: Slide[] = [
     id: "identity",
     label: "Identity",
     title: "IT engineer with AI systems focus",
-    subtitle: "Frontend, backend, cloud, AI tools, and workflow automation.",
+    subtitle: "Frontend, backend, cloud, AI tools, and workflow design.",
     bullets: [
-      "Builds web tools, AI-assisted workflows, dashboards, and automation systems",
+      "Builds web tools, AI-supported workflows, dashboards, and internal systems",
       "Turns messy operational problems into user flows, system logic, technical requirements, and usable products",
       "Works across React, Flutter, NodeJS, Python, Java, C# .NET, Firebase, Cloud Run, Vertex AI, and AI Studio",
       "Photography and design are secondary strengths that improve interface taste, product storytelling, and presentation",
@@ -61,7 +60,7 @@ export const slides: Slide[] = [
     title: "AI systems architecture",
     subtitle: "Map how a business works, then turn the chaos into usable workflow logic.",
     bullets: [
-      "Design AI-assisted workflows for business operations",
+      "Design AI-supported workflows for business operations",
       "Map business processes into clear system logic and user flows",
       "Structure internal tools, dashboards, and human-review steps",
       "Translate practical problems into build-ready technical requirements",
@@ -73,15 +72,14 @@ export const slides: Slide[] = [
     id: "ai-workflows",
     label: "AI Engineer",
     title: "AI workflow engineering",
-    subtitle: "Build and refine practical workflows for outreach, admin, research, intake, and production management.",
+    subtitle: "Build and refine practical workflows for outreach, admin, intake, and production management.",
     bullets: [
-      "Prompt systems, intake flows, automation logic, and repeatable SOPs",
-      "Internal tools, dashboards, and AI-assisted workspaces",
+      "Prompt systems, intake flows, workflow logic, and repeatable SOPs",
+      "Internal tools, dashboards, and AI-supported workspaces",
       "Lead generation, client intake, task tracking, and knowledge organization",
       "Developer collaboration to move from system idea to shipped product",
     ],
-    tags: ["Prompt Systems", "Automation Logic", "Internal Tools", "Operations"],
-    links: [{ label: "Muted Science repo", href: "https://github.com/moonman89/muted-science" }],
+    tags: ["Prompt Systems", "Workflow Logic", "Internal Tools", "Operations"],
   },
   {
     id: "stack",
@@ -112,17 +110,8 @@ export const slides: Slide[] = [
     id: "projects",
     label: "Projects",
     title: "Current project focus",
-    subtitle: "Muted Science, GitHub projects, AI experiments, and portfolio infrastructure.",
+    subtitle: "GitHub projects, AI experiments, and portfolio infrastructure.",
     projects: [
-      {
-        name: "Muted Science",
-        description:
-          "Creative technology project focused on experimental systems, digital tools, automation, visual infrastructure, and AI workflow exploration.",
-        links: [
-          { label: "Website", href: "https://mutedscience.com" },
-          { label: "Repository", href: "https://github.com/moonman89/muted-science" },
-        ],
-      },
       {
         name: "GitHub Profile",
         description:
@@ -130,6 +119,14 @@ export const slides: Slide[] = [
         links: [
           { label: "Profile", href: "https://github.com/moonman89" },
           { label: "README", href: "https://github.com/moonman89/moonman89" },
+        ],
+      },
+      {
+        name: "Resume / Portfolio Website",
+        description:
+          "React-based presentation website with slide-style resume pages, technical stack sections, rotating UI elements, and portfolio navigation.",
+        links: [
+          { label: "Repository", href: "https://github.com/moonman89/edward-night-resume" },
         ],
       },
     ],
@@ -156,7 +153,7 @@ export const slides: Slide[] = [
     subtitle: "Technical structure with creative judgment.",
     bullets: [
       "Shape the system, understand the business goal, plan the user flow, and organize the build",
-      "Bring engineering structure to AI workflows, internal tools, cloud builds, and automation systems",
+      "Bring engineering structure to AI workflows, internal tools, cloud builds, and business systems",
       "Use photo and design background as a secondary advantage for sharper UI, storytelling, and product presentation",
     ],
     quote: "The system matters. The way it feels matters too.",
@@ -171,14 +168,12 @@ export const slides: Slide[] = [
       "React / Flutter frontend projects",
       "Firebase, Cloud Run, Vertex AI, and AI Studio builds",
       "Backend projects using NodeJS, Python, Java, or C# .NET",
-      "Internal tools, dashboards, automation systems, and creative technology collaborations",
+      "Internal tools, dashboards, business systems, and creative technology collaborations",
     ],
     links: [
       { label: "Email", href: "mailto:mutedscience@icloud.com", note: "mutedscience@icloud.com" },
       { label: "Instagram", href: "https://instagram.com/studyofnight", note: "@studyofnight" },
-      { label: "Muted Science", href: "https://mutedscience.com" },
       { label: "GitHub", href: "https://github.com/moonman89", note: "moonman89" },
-      { label: "muted-science repo", href: "https://github.com/moonman89/muted-science" },
     ],
   },
 ];
