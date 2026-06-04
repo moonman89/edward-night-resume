@@ -15,7 +15,6 @@
   color: var(--fg);
 }
 
-/* —— Progress —— */
 .progress-bar {
   position: fixed;
   top: 0;
@@ -43,7 +42,6 @@
   mix-blend-mode: overlay;
 }
 
-/* —— Marquee —— */
 .marquee {
   position: fixed;
   bottom: 5.5rem;
@@ -74,23 +72,17 @@
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* —— UI layer —— */
 .site-ui {
   position: relative;
   z-index: 5;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  padding: 20px clamp(16px, 4vw, 40px) 24px;
-  padding-top: 28px;
+  padding: 28px clamp(16px, 4vw, 40px) 24px;
 }
 
 .site-header {
@@ -210,10 +202,7 @@
 }
 
 @keyframes railIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
+  from { opacity: 0; transform: translateY(8px); }
 }
 
 .link-rail-item:hover {
@@ -289,14 +278,8 @@
 }
 
 @keyframes panelIn {
-  from {
-    opacity: 0;
-    transform: translateX(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .panel-enter .content-eyebrow,
@@ -313,10 +296,7 @@
 }
 
 @keyframes staggerIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+  from { opacity: 0; transform: translateY(10px); }
 }
 
 .content-eyebrow {
@@ -355,6 +335,78 @@
   line-height: 1.35;
   border-left: 2px solid var(--accent);
   padding-left: 0.85rem;
+}
+
+.tech-widget {
+  position: relative;
+  margin: 0 0 1.2rem;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid rgba(255, 26, 26, 0.38);
+  background:
+    linear-gradient(135deg, rgba(255, 26, 26, 0.18), rgba(255, 26, 26, 0.02)),
+    rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 30px rgba(255, 26, 26, 0.08);
+  overflow: hidden;
+}
+
+.tech-widget::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 22px,
+    rgba(255, 255, 255, 0.035) 23px
+  );
+  pointer-events: none;
+}
+
+.tech-widget-topline {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.tech-widget h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0.35rem 0 0.75rem;
+  font-family: Syne, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.tech-widget-grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-widget-grid span {
+  padding: 0.32rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: #f5f0eb;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: techPulse 2.2s ease infinite;
+}
+
+@keyframes techPulse {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.14); }
+  50% { border-color: rgba(255, 26, 26, 0.65); }
 }
 
 .content-quote {
@@ -403,10 +455,13 @@
 }
 
 .content-list li::before {
-  content: "—";
+  content: "";
   position: absolute;
+  top: 0.55em;
   left: 0;
-  color: var(--accent);
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
 }
 
 .content-stack {
@@ -571,38 +626,24 @@
 }
 
 @media (max-width: 768px) {
-  .site-header {
-    grid-template-columns: 1fr auto;
-  }
-
+  .site-header { grid-template-columns: 1fr auto; }
   .site-nav {
     grid-column: 1 / -1;
     justify-content: flex-start;
     order: 3;
     padding-top: 0.5rem;
   }
-
-  .site-main {
-    grid-template-columns: 1fr;
-  }
-
+  .site-main { grid-template-columns: 1fr; }
   .site-aside {
     flex-direction: row;
     gap: 0.35rem;
   }
-
-  .slide-id {
-    display: none;
-  }
-
+  .slide-id { display: none; }
   .marquee {
     bottom: 4rem;
     opacity: 0.2;
   }
-
-  .site-content {
-    padding: 1rem 1.1rem;
-  }
+  .site-content { padding: 1rem 1.1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -618,11 +659,9 @@
   .panel-enter .stack-group,
   .panel-enter .project-card,
   .panel-enter .content-links li,
-  .link-rail-item {
+  .link-rail-item,
+  .tech-widget-grid span {
     animation: none;
   }
-
-  .progress-fill {
-    transition: none;
-  }
+  .progress-fill { transition: none; }
 }
