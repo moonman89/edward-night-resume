@@ -64,24 +64,6 @@ export function SlideDeck() {
         />
       </div>
 
-      <div className="slide-backdrops" aria-hidden>
-        {slides.map((s, i) => (
-          <div
-            key={s.id}
-            className={`backdrop-layer ${i === index ? "is-active" : ""}`}
-          >
-            <img
-              src={s.image}
-              alt=""
-              className={i === index ? "ken-burns" : ""}
-              loading={i <= 1 ? "eager" : "lazy"}
-              decoding="async"
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="site-scrim" aria-hidden />
       <div className="site-grain" aria-hidden />
 
       {slide.id === "cover" && (
@@ -239,9 +221,6 @@ export function SlideDeck() {
               </ul>
             )}
 
-            <p className="image-credit">
-              Photo: {slide.imageAlt}
-            </p>
           </article>
         </main>
 

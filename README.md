@@ -39,13 +39,6 @@ After the first push:
 2. Wait for the **Deploy to GitHub Pages** workflow to finish
 3. Site URL: **https://moonman89.github.io/edward-night-resume/**
 
-## Custom photos (full-bleed backgrounds)
-
-Each slide uses a background image defined in `src/data/slides.ts`. To use your own work:
-
-1. Add images to `public/slides/` (e.g. `cover.jpg`)
-2. In `slides.ts`, set `image: "/edward-night-resume/slides/cover.jpg"` (or `/slides/cover.jpg` when running locally)
-
 ## Build
 
 ```bash

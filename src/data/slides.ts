@@ -10,9 +10,6 @@ export type Slide = {
   id: string;
   label: string;
   title: string;
-  /** Full-bleed background — swap with /slides/your-photo.jpg in public/ */
-  image: string;
-  imageAlt: string;
   subtitle?: string;
   bullets?: string[];
   links?: LinkItem[];
@@ -22,16 +19,11 @@ export type Slide = {
   manifesto?: string;
 };
 
-const img = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=2400&q=80`;
-
 export const slides: Slide[] = [
   {
     id: "cover",
     label: "Index",
     title: "Edward Night",
-    image: img("photo-1509631179647-0177331693ae"),
-    imageAlt: "Fashion editorial — runway atmosphere",
     subtitle:
       "Producer · Photographer · Video Director · AI Systems Architect · Workflow Engineer",
     manifesto:
@@ -48,8 +40,6 @@ export const slides: Slide[] = [
     id: "identity",
     label: "Identity",
     title: "Creative operator & AI systems builder",
-    image: img("photo-1554048612-b69da5d25493"),
-    imageAlt: "Studio portrait lighting",
     subtitle:
       "Director · producer · architect · workflow engineer — less hype, more structure.",
     bullets: [
@@ -66,8 +56,6 @@ export const slides: Slide[] = [
     id: "ai-architecture",
     label: "AI Systems",
     title: "AI systems architecture",
-    image: img("photo-1451187580459-43490279c0fa"),
-    imageAlt: "Earth from space — systems view",
     subtitle: "Turn how a business already works into usable workflow logic.",
     bullets: [
       "Map messy processes into clear AI-assisted workflows",
@@ -82,8 +70,6 @@ export const slides: Slide[] = [
     id: "ai-workflows",
     label: "Workflows",
     title: "AI workflow engineering",
-    image: img("photo-1550751827-4bd374c873f5"),
-    imageAlt: "Neon tech corridor",
     subtitle: "Build, refine, prototype — strategy through execution.",
     bullets: [
       "Operations, outreach, admin, production management workflows",
@@ -98,8 +84,6 @@ export const slides: Slide[] = [
     id: "creative",
     label: "Creative",
     title: "Creative production",
-    image: img("photo-1452587925147-dadf63c69ddb"),
-    imageAlt: "Film production — light and lens",
     subtitle: "Visual identity, clean execution, practical delivery.",
     bullets: [
       "Photography direction & commercial image-making",
@@ -115,8 +99,6 @@ export const slides: Slide[] = [
     id: "business",
     label: "Business",
     title: "Morrowgrid & execution",
-    image: img("photo-1497366216548-37526070297c"),
-    imageAlt: "Modern workspace — operations",
     subtitle: "From scattered admin to systems that scale.",
     bullets: [
       "Custom AI workflow systems for businesses",
@@ -139,8 +121,6 @@ export const slides: Slide[] = [
     id: "projects",
     label: "Projects",
     title: "Current focus",
-    image: img("photo-1541961017774-22349e4a1262"),
-    imageAlt: "Gallery — art and archive",
     subtitle: "Where the work is living right now.",
     projects: [
       {
@@ -178,8 +158,6 @@ export const slides: Slide[] = [
     id: "stack",
     label: "Stack",
     title: "Tools & work areas",
-    image: img("photo-1518770660439-4636190af475"),
-    imageAlt: "Circuit — tools and technology",
     bullets: [
       "AI / Systems — workflow design, architecture, prompts, automation, GitHub, CRM",
       "Creative — photography, video direction, producing, campaigns, visual strategy",
@@ -201,8 +179,6 @@ export const slides: Slide[] = [
     id: "value",
     label: "Edge",
     title: "Where I add value",
-    image: img("photo-1618005182384-a83a8dd57f6c"),
-    imageAlt: "Abstract form — vision and structure",
     subtitle: "Taste + structure — concept through delivery.",
     bullets: [
       "Shape the visual idea, organize production, understand the business goal",
@@ -215,8 +191,6 @@ export const slides: Slide[] = [
     id: "contact",
     label: "Contact",
     title: "Open to",
-    image: img("photo-1514525253161-7a46f19e9331"),
-    imageAlt: "Night crowd — live culture",
     subtitle: "Founders · agencies · artists · operators.",
     bullets: [
       "AI workflow architecture & business automation",
