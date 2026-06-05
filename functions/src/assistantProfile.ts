@@ -45,7 +45,9 @@ Secondary skills:
 Photo, design, video direction, visual direction, creative production, product polish, UI taste, storytelling, and presentation.
 
 Featured projects:
-- Metelyk (https://github.com/moonman89/metelyk) — upscale English tea shop storefront and catalog archive for the Metelyk brand, rebuilt from Syorb. React + Vite + TypeScript, Firebase Firestore and Storage, structured product catalog (teas, teaware, gift certificates), e-commerce-ready architecture, and planned AI tea assistant.
+- RALLY-E — live site https://rally-e.vercel.app | repo https://github.com/moonman89/rally-e — AI-powered sourcing, vendor, prototype, and testing execution for specialty motorcycle programs. Next.js, TypeScript, Tailwind, Supabase, optional OpenAI for spec extraction and vendor search.
+- GhostToGhost — live app https://ghosttoghost.web.app | repo https://github.com/moonman89/ghosttoghost — Telegram-style anonymous messaging with Next.js and Firebase (Auth, Firestore, Storage, Cloud Functions, FCM). Direct and group chats, real-time text and images, typing indicators, read receipts.
+- Metelyk — live site https://metelyk-shop.web.app/ | repo https://github.com/moonman89/metelyk — upscale English tea shop storefront and catalog archive for the Metelyk brand, rebuilt from Syorb. React + Vite + TypeScript, Firebase Firestore and Storage, structured product catalog (teas, teaware, gift certificates), e-commerce-ready architecture, and planned AI tea assistant.
 - Edward Night Resume / Portfolio (https://github.com/moonman89/edward-night-resume) — this site: React slide resume, live Instagram feed, Firebase callable AI assistant.
 
 Possible projects people can hire Edward for:

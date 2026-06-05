@@ -110,13 +110,32 @@ export const slides: Slide[] = [
     id: "projects",
     label: "Projects",
     title: "Current project focus",
-    subtitle: "Client builds, e-commerce systems, AI assistants, and portfolio infrastructure.",
+    subtitle: "RALLY-E, GhostToGhost, Metelyk, and portfolio infrastructure.",
     projects: [
+      {
+        name: "RALLY-E",
+        description:
+          "AI-powered sourcing, vendor, prototype, and testing execution for specialty motorcycle programs. Next.js + TypeScript + Tailwind, Supabase auth and data, optional OpenAI for spec extraction and vendor search.",
+        links: [
+          { label: "Live site", href: "https://rally-e.vercel.app" },
+          { label: "Repository", href: "https://github.com/moonman89/rally-e" },
+        ],
+      },
+      {
+        name: "GhostToGhost",
+        description:
+          "Telegram-style anonymous messaging app — pick a username, direct or group chats, real-time text and images, typing indicators and read receipts. Next.js + Firebase (Auth, Firestore, Storage, Cloud Functions, FCM).",
+        links: [
+          { label: "Live app", href: "https://ghosttoghost.web.app" },
+          { label: "Repository", href: "https://github.com/moonman89/ghosttoghost" },
+        ],
+      },
       {
         name: "Metelyk — Tea Shop & Catalog",
         description:
           "English-language upscale tea storefront and product archive for the Metelyk brand (rebuilt from Syorb). React + Vite + TypeScript catalog, Firebase Firestore and Storage, e-commerce-ready data model, and planned AI tea assistant.",
         links: [
+          { label: "Live site", href: "https://metelyk-shop.web.app/" },
           { label: "Repository", href: "https://github.com/moonman89/metelyk" },
         ],
       },
@@ -173,7 +192,7 @@ export const slides: Slide[] = [
     subtitle: "IT engineering, AI engineering, cloud builds, and creative technology work.",
     bullets: [
       "IT engineering and AI workflow architecture",
-      "E-commerce and catalog systems (e.g. Metelyk tea shop)",
+      "RALLY-E, GhostToGhost, Metelyk, and similar full-stack builds",
       "React / Flutter frontend projects",
       "Firebase, Cloud Run, Vertex AI, and AI Studio builds",
       "Backend projects using NodeJS, Python, Java, or C# .NET",
