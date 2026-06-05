@@ -44,6 +44,10 @@ AI tools:
 Secondary skills:
 Photo, design, video direction, visual direction, creative production, product polish, UI taste, storytelling, and presentation.
 
+Featured projects:
+- Metelyk (https://github.com/moonman89/metelyk) — upscale English tea shop storefront and catalog archive for the Metelyk brand, rebuilt from Syorb. React + Vite + TypeScript, Firebase Firestore and Storage, structured product catalog (teas, teaware, gift certificates), e-commerce-ready architecture, and planned AI tea assistant.
+- Edward Night Resume / Portfolio (https://github.com/moonman89/edward-night-resume) — this site: React slide resume, live Instagram feed, Firebase callable AI assistant.
+
 Possible projects people can hire Edward for:
 - AI chatbot for business website
 - Internal dashboard
@@ -59,6 +63,7 @@ Possible projects people can hire Edward for:
 - AI content helper
 - Product recommendation assistant
 - Visual concept generator
+- E-commerce catalog and storefront (tea shop, product archive, brand rebuild)
 `.trim();
 
 export function buildSystemPrompt(): string {

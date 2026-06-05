@@ -34,7 +34,7 @@ export const slides: Slide[] = [
     manifesto:
       "I build practical AI-powered systems, web tools, workflow systems, and cloud-based applications. AI and IT engineering are the main focus; photo and design are secondary skills that sharpen product taste and presentation.",
     quote: "Build the system. Ship the tool. Make it usable.",
-    tags: ["IT Engineer", "AI Engineer", "React", "Google Cloud"],
+    tags: ["IT Engineer", "AI Engineer", "React", "Firebase", "E-commerce"],
     links: [
       { label: "Email", href: "mailto:mutedscience@icloud.com", note: "mutedscience@icloud.com" },
       { label: "Instagram", href: "https://instagram.com/studyofnight", note: "@studyofnight" },
@@ -110,8 +110,16 @@ export const slides: Slide[] = [
     id: "projects",
     label: "Projects",
     title: "Current project focus",
-    subtitle: "GitHub projects, AI experiments, and portfolio infrastructure.",
+    subtitle: "Client builds, e-commerce systems, AI assistants, and portfolio infrastructure.",
     projects: [
+      {
+        name: "Metelyk — Tea Shop & Catalog",
+        description:
+          "English-language upscale tea storefront and product archive for the Metelyk brand (rebuilt from Syorb). React + Vite + TypeScript catalog, Firebase Firestore and Storage, e-commerce-ready data model, and planned AI tea assistant.",
+        links: [
+          { label: "Repository", href: "https://github.com/moonman89/metelyk" },
+        ],
+      },
       {
         name: "GitHub Profile",
         description:
@@ -165,6 +173,7 @@ export const slides: Slide[] = [
     subtitle: "IT engineering, AI engineering, cloud builds, and creative technology work.",
     bullets: [
       "IT engineering and AI workflow architecture",
+      "E-commerce and catalog systems (e.g. Metelyk tea shop)",
       "React / Flutter frontend projects",
       "Firebase, Cloud Run, Vertex AI, and AI Studio builds",
       "Backend projects using NodeJS, Python, Java, or C# .NET",
