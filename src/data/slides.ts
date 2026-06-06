@@ -8,8 +8,67 @@ export type StackGroup = {
 export type ProjectCard = {
   name: string;
   description: string;
+  stack: string[];
   links: LinkItem[];
 };
+
+/** Consolidated stack from shipped projects + broader capabilities */
+export const PORTFOLIO_STACK: StackGroup[] = [
+  {
+    category: "Web Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "Flutter",
+      "Vanilla JavaScript / HTML",
+      "Figma",
+    ],
+  },
+  {
+    category: "Backend",
+    items: [
+      "Node.js",
+      "Cloud Functions",
+      "Supabase",
+      "Python",
+      "Java",
+      "C# .NET",
+    ],
+  },
+  {
+    category: "Firebase / Google Cloud",
+    items: [
+      "Firebase Auth",
+      "Firestore",
+      "Firebase Storage",
+      "Firebase Hosting",
+      "Cloud Functions",
+      "Cloud Run",
+      "Vertex AI",
+      "AI Studio",
+      "FCM",
+    ],
+  },
+  {
+    category: "AI & Integrations",
+    items: ["OpenAI", "Instagram Graph API", "Zod"],
+  },
+  {
+    category: "Deploy & Dev Tools",
+    items: [
+      "Vercel",
+      "GitHub Pages",
+      "Cursor",
+      "Gemini 3.5",
+      "Opus 4.8",
+      "Sonnet 4.6",
+      "Google AI coding tools",
+    ],
+  },
+];
 
 export type Slide = {
   id: string;
@@ -86,25 +145,8 @@ export const slides: Slide[] = [
     label: "Stack",
     title: "Technical stack",
     subtitle: "Main engineering tools and platforms.",
-    stackGroups: [
-      {
-        category: "Web Frontend",
-        items: ["React", "Flutter", "Vanilla Javascript / HTML", "Figma"],
-      },
-      {
-        category: "Backend",
-        items: ["NodeJS", "Python", "Java", "C# .NET"],
-      },
-      {
-        category: "Google Cloud",
-        items: ["Firebase", "Cloud Run", "Vertex AI", "AI Studio"],
-      },
-      {
-        category: "AI Tools",
-        items: ["Google AI coding tools", "Cursor", "Gemini 3.5", "Opus 4.8", "Sonnet 4.6"],
-      },
-    ],
-    tags: ["React", "Flutter", "Firebase", "Vertex AI"],
+    stackGroups: PORTFOLIO_STACK,
+    tags: ["Next.js", "React", "Firebase", "Supabase", "OpenAI"],
   },
   {
     id: "projects",
@@ -115,7 +157,16 @@ export const slides: Slide[] = [
       {
         name: "RALLY-E",
         description:
-          "AI-powered sourcing, vendor, prototype, and testing execution for specialty motorcycle programs. Next.js + TypeScript + Tailwind, Supabase auth and data, optional OpenAI for spec extraction and vendor search.",
+          "AI-powered sourcing, vendor, prototype, and testing execution for specialty motorcycle programs — build wizard, vendor CRM, RFQ flows, and proof tracking.",
+        stack: [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Supabase",
+          "OpenAI",
+          "Zod",
+          "Vercel",
+        ],
         links: [
           { label: "Live site", href: "https://rally-e.vercel.app" },
           { label: "Repository", href: "https://github.com/moonman89/rally-e" },
@@ -124,7 +175,17 @@ export const slides: Slide[] = [
       {
         name: "GhostToGhost",
         description:
-          "Telegram-style anonymous messaging app — pick a username, direct or group chats, real-time text and images, typing indicators and read receipts. Next.js + Firebase (Auth, Firestore, Storage, Cloud Functions, FCM).",
+          "Telegram-style anonymous messaging — usernames, direct and group chats, real-time text and images, typing indicators, and read receipts.",
+        stack: [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Firebase Auth",
+          "Firestore",
+          "Cloud Functions",
+          "FCM",
+          "Firebase Hosting",
+        ],
         links: [
           { label: "Live app", href: "https://ghosttoghost.web.app" },
           { label: "Repository", href: "https://github.com/moonman89/ghosttoghost" },
@@ -133,7 +194,18 @@ export const slides: Slide[] = [
       {
         name: "Metelyk — Tea Shop & Catalog",
         description:
-          "English-language upscale tea storefront and product archive for the Metelyk brand (rebuilt from Syorb). React + Vite + TypeScript catalog, Firebase Firestore and Storage, e-commerce-ready data model, and planned AI tea assistant.",
+          "Upscale English tea storefront and product archive for the Metelyk brand — structured catalog, Firebase-backed data, and AI tea assistant.",
+        stack: [
+          "React",
+          "Vite",
+          "TypeScript",
+          "React Router",
+          "Firestore",
+          "Firebase Storage",
+          "Cloud Functions",
+          "OpenAI",
+          "Firebase Hosting",
+        ],
         links: [
           { label: "Live site", href: "https://metelyk-shop.web.app/" },
           { label: "Repository", href: "https://github.com/moonman89/metelyk" },
@@ -142,7 +214,8 @@ export const slides: Slide[] = [
       {
         name: "GitHub Profile",
         description:
-          "Public profile and project archive for AI workflow experiments, creative technology builds, frontend work, and portfolio infrastructure.",
+          "Public project archive — AI workflow experiments, full-stack apps, and portfolio infrastructure.",
+        stack: ["GitHub"],
         links: [
           { label: "Profile", href: "https://github.com/moonman89" },
           { label: "README", href: "https://github.com/moonman89/moonman89" },
@@ -151,8 +224,19 @@ export const slides: Slide[] = [
       {
         name: "Resume / Portfolio Website",
         description:
-          "React-based presentation website with slide-style resume pages, technical stack sections, rotating UI elements, and portfolio navigation.",
+          "This site — slide-style resume, Instagram work feed, rotating stack widget, and Firebase callable AI assistant.",
+        stack: [
+          "React",
+          "Vite",
+          "TypeScript",
+          "Cloud Functions",
+          "OpenAI",
+          "Firebase Hosting",
+          "Instagram Graph API",
+          "GitHub Pages",
+        ],
         links: [
+          { label: "Live site", href: "https://moonman89.github.io/edward-night-resume/" },
           { label: "Repository", href: "https://github.com/moonman89/edward-night-resume" },
         ],
       },

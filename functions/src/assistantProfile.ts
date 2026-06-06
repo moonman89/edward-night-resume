@@ -14,41 +14,26 @@ Main focus:
 - Backend with NodeJS, Python, Java, and C# .NET
 - Internal tools and automation systems
 
-Technical stack:
+Technical stack (from shipped projects):
 
-Web Frontend:
-- React
-- Flutter
-- Vanilla Javascript / HTML
-- Figma
+Web Frontend: React, Next.js, TypeScript, Tailwind CSS, Vite, Flutter, Vanilla JavaScript / HTML, Figma
 
-Backend:
-- NodeJS
-- Python
-- Java
-- C# .NET
+Backend: Node.js, Cloud Functions, Supabase, Python, Java, C# .NET
 
-Google Cloud:
-- Firebase
-- Cloud Run
-- Vertex AI
-- AI Studio
+Firebase / Google Cloud: Firebase Auth, Firestore, Firebase Storage, Firebase Hosting, Cloud Functions, Cloud Run, Vertex AI, AI Studio, FCM
 
-AI tools:
-- Google AI coding tools
-- Cursor
-- Gemini 3.5
-- Opus 4.8
-- Sonnet 4.6
+AI & Integrations: OpenAI, Instagram Graph API, Zod
+
+Deploy & Dev Tools: Vercel, GitHub Pages, Cursor, Gemini 3.5, Opus 4.8, Sonnet 4.6, Google AI coding tools
 
 Secondary skills:
 Photo, design, video direction, visual direction, creative production, product polish, UI taste, storytelling, and presentation.
 
-Featured projects:
-- RALLY-E — live site https://rally-e.vercel.app | repo https://github.com/moonman89/rally-e — AI-powered sourcing, vendor, prototype, and testing execution for specialty motorcycle programs. Next.js, TypeScript, Tailwind, Supabase, optional OpenAI for spec extraction and vendor search.
-- GhostToGhost — live app https://ghosttoghost.web.app | repo https://github.com/moonman89/ghosttoghost — Telegram-style anonymous messaging with Next.js and Firebase (Auth, Firestore, Storage, Cloud Functions, FCM). Direct and group chats, real-time text and images, typing indicators, read receipts.
-- Metelyk — live site https://metelyk-shop.web.app/ | repo https://github.com/moonman89/metelyk — upscale English tea shop storefront and catalog archive for the Metelyk brand, rebuilt from Syorb. React + Vite + TypeScript, Firebase Firestore and Storage, structured product catalog (teas, teaware, gift certificates), e-commerce-ready architecture, and planned AI tea assistant.
-- Edward Night Resume / Portfolio (https://github.com/moonman89/edward-night-resume) — this site: React slide resume, live Instagram feed, Firebase callable AI assistant.
+Featured projects (with stack):
+- RALLY-E — https://rally-e.vercel.app | https://github.com/moonman89/rally-e — AI sourcing, vendor CRM, build wizard, RFQ flows for specialty motorcycle programs. Stack: Next.js, TypeScript, Tailwind CSS, Supabase (Auth + Postgres + RLS), OpenAI (optional), Zod, Vercel.
+- GhostToGhost — https://ghosttoghost.web.app | https://github.com/moonman89/ghosttoghost — Anonymous Telegram-style messaging. Stack: Next.js, TypeScript, Tailwind CSS, Firebase Auth, Firestore, Cloud Functions, FCM, Firebase Hosting.
+- Metelyk — https://metelyk-shop.web.app/ | https://github.com/moonman89/metelyk — Upscale tea storefront and catalog. Stack: React, Vite, TypeScript, React Router, Firestore, Firebase Storage, Cloud Functions, OpenAI, Firebase Hosting.
+- Edward Night Resume / Portfolio — https://moonman89.github.io/edward-night-resume/ | https://github.com/moonman89/edward-night-resume — Slide resume, Instagram feed, AI assistant. Stack: React, Vite, TypeScript, Cloud Functions, OpenAI, Firebase Hosting, Instagram Graph API, GitHub Pages.
 
 Possible projects people can hire Edward for:
 - AI chatbot for business website

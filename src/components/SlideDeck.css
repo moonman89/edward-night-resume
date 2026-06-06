@@ -524,6 +524,24 @@
   color: var(--muted);
 }
 
+.project-stack {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.project-stack li {
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--border);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
 .project-links {
   list-style: none;
   margin: 0;

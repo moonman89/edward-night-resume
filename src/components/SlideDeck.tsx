@@ -1,30 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import { profileLinks } from "../data/links";
-import { slides } from "../data/slides";
+import { PORTFOLIO_STACK, slides } from "../data/slides";
 import "./SlideDeck.css";
 
 const YEAR = new Date().getFullYear();
 const MARQUEE =
   "EDWARD NIGHT · IT ENGINEER · AI ENGINEER · AI SYSTEMS ARCHITECT · REACT · FIREBASE · VERTEX AI · ";
 
-const TECH_WIDGET = [
-  {
-    label: "Web Frontend",
-    items: ["React", "Flutter", "Vanilla Javascript / HTML", "Figma"],
-  },
-  {
-    label: "Backend",
-    items: ["NodeJS", "Python", "Java", "C# .NET"],
-  },
-  {
-    label: "Google Cloud",
-    items: ["Firebase", "Cloud Run", "Vertex AI", "AI Studio"],
-  },
-  {
-    label: "AI Tools",
-    items: ["Google AI coding tools", "Cursor", "Gemini 3.5", "Opus 4.8", "Sonnet 4.6"],
-  },
-];
+const TECH_WIDGET = PORTFOLIO_STACK.map((group) => ({
+  label: group.category,
+  items: group.items,
+}));
 
 type SlideDeckProps = {
   onOpenPortfolio?: () => void;
@@ -264,6 +250,13 @@ export function SlideDeck({ onOpenPortfolio }: SlideDeckProps) {
                   >
                     <h2 className="project-name">{project.name}</h2>
                     <p className="project-desc">{project.description}</p>
+                    {project.stack.length > 0 && (
+                      <ul className="project-stack" aria-label={`${project.name} stack`}>
+                        {project.stack.map((tool) => (
+                          <li key={tool}>{tool}</li>
+                        ))}
+                      </ul>
+                    )}
                     <ul className="project-links">
                       {project.links.map((link) => (
                         <li key={link.href}>
